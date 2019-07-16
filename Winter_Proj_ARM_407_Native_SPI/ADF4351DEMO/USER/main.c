@@ -8,6 +8,7 @@
 //#include "exti.h"
 //#include "dac.h"
 //#include "adc.h"
+#include "spi.h"
 
 #include <math.h>
 
@@ -18,6 +19,7 @@ uint64_t SPI_NULL=0x0000000000000000;
 //技术支持：www.openedv.com
 //广州市星翼电子科技有限公司
 
+/*
 //fix include errors
 #define SPI_PORT 	GPIOE
 #define SPI_FLAG_PORT GPIOC
@@ -32,6 +34,11 @@ uint64_t SPI_NULL=0x0000000000000000;
 void SPIx_Init(void);
 uint64_t SPIx_SendReadByte36(uint64_t byte);
 uint64_t SPIx_SendReadByte16(uint64_t byte);
+*/	
+	
+#define SPI_FLAG_PORT GPIOC	
+#define SPI_FLAG 	GPIO_Pin_14
+#define RCC_SPI_FLAG		RCC_AHB1Periph_GPIOC
 	
  int main(void)
  { 
@@ -48,7 +55,9 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 
 	delay_init(168);	    	 //延时函数初始化	  
 	uart_init(9600);	 	//串口初始化为9600
-	SPIx_Init();
+	//SPIx_Init();
+	SPI1_Init();
+	SPI1_SetSpeed(SPI_BaudRatePrescaler_2);
 	//LED_Init();		  		//初始化与LED连接的硬件接口
  	LCD_Init();			   	//初始化LCD 		
 	LCD_Display_Dir(1);
@@ -56,6 +65,15 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 	//KEY_Init();				//按键初始化		 	
  	//Adc_Init();		  		//ADC初始化
 	//Dac1_Init();		 	//DAC通道1初始化	
+	
+	GPIO_InitTypeDef SPI_GPIO_InitStructure;
+	RCC_AHB1PeriphClockCmd(RCC_SPI_FLAG, ENABLE);
+	SPI_GPIO_InitStructure.GPIO_Pin = SPI_FLAG;//CS,SCLK,MISO
+  SPI_GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
+	SPI_GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;
+	SPI_GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
+	//SPI_GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP; 
+  GPIO_Init(SPI_FLAG_PORT, &SPI_GPIO_InitStructure);	
 	
 	LCD_Clear(WHITE);
 	LCD_Clear(BLUE);
@@ -83,6 +101,7 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 	
 	while(1)
 	{
+		/*
 		dutyRatio_N=(data4*100.0)/(data3+data4);
 		if(abs(dutyRatio_N-dutyRatio_L)>1.5)
 		{
@@ -103,14 +122,14 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 		LCD_ShowxFloat(30,240,timeInterval,4,10,24,0);
 		POINT_COLOR=RED;
 		
-		delay_us(1);
+		delay_us(1);*/
 		GPIO_SetBits(SPI_FLAG_PORT,SPI_FLAG);
 		
-		Data_R=SPIx_SendReadByte36(0xF0000001E);
+		Data_R=SPI1_ReadWriteByte(0xFE);
 		
 		Data_F=Data_R >> 32;
 		Data_L=Data_R & 0x0FFFFFFFF;
-		
+		/*
 		switch(Data_F)
 		{
 			case 1:
@@ -176,11 +195,11 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 					}
 					break;
 			}
-		}
+		}*/
 		GPIO_ResetBits(SPI_FLAG_PORT,SPI_FLAG); // flag = 0
 	}									    
 }	
-
+/*
 //fix include errors
 void SPIx_Init(void)
 {
@@ -290,3 +309,4 @@ uint64_t SPIx_SendReadByte16(uint64_t byte)
   delay_us(1);
   return DataRead;	
 }
+*/
