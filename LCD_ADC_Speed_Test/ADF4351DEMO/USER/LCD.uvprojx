@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\KEY;..\HARDWARE\KEY;..\HARDWARE\LCD;..\HARDWARE\LED;..\FWLIB\inc;..\HARDWARE\LCD12864;..\HARDWARE\KeyBoard;..\HARDWARE\ADF4351;..\HARDWARE\ADC;..\HARDWARE\SPI;..\HARDWARE\PE4302;..\HARDWARE\DAC;..\HARDWARE\EXTI</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\KEY;..\HARDWARE\KEY;..\HARDWARE\LCD;..\HARDWARE\LED;..\FWLIB\inc;..\HARDWARE\LCD12864;..\HARDWARE\KeyBoard;..\HARDWARE\ADF4351;..\HARDWARE\ADC;..\HARDWARE\SPI;..\HARDWARE\PE4302;..\HARDWARE\DAC;..\HARDWARE\EXTI;..\emWin\;..\emWin\STemWinLibrary522\Config;..\emWin\STemWinLibrary522\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -408,11 +408,6 @@
               <FilePath>..\HARDWARE\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>lcd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LCD\lcd.c</FilePath>
-            </File>
-            <File>
               <FileName>key.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\KEY\key.c</FilePath>
@@ -446,6 +441,11 @@
               <FileName>PE4302.C</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\PE4302\PE4302.C</FilePath>
+            </File>
+            <File>
+              <FileName>ili93xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\LCD\ili93xx.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -536,6 +536,41 @@
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
               <FilePath>..\readme.txt</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>emWin</GroupName>
+          <Files>
+            <File>
+              <FileName>emWin_inc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\emWin\emWin_inc.h</FilePath>
+            </File>
+            <File>
+              <FileName>STemWin522_CM4_Keil.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\emWin\STemWin522_CM4_Keil.lib</FilePath>
+            </File>
+            <File>
+              <FileName>GUIConf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\emWin\STemWinLibrary522\Config\GUIConf.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCDConf_FlexColor_Template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\emWin\STemWinLibrary522\Config\LCDConf_FlexColor_Template.c</FilePath>
+            </File>
+            <File>
+              <FileName>GUIConf.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\emWin\STemWinLibrary522\Config\GUIConf.h</FilePath>
+            </File>
+            <File>
+              <FileName>GUI_X.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\emWin\STemWinLibrary522\OS\GUI_X.c</FilePath>
             </File>
           </Files>
         </Group>

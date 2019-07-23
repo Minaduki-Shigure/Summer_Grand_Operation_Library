@@ -2,13 +2,15 @@
 #include "delay.h"
 #include "sys.h"
 #include "usart.h"
-#include "lcd.h"
+#include "ili93xx.h"
 //#include "key.h"
 //#include "spix.h"
 //#include "exti.h"
 //#include "dac.h"
 #include "adc.h"
 #include "spi.h"
+
+#include "emWin_inc.h"
 
 #include <math.h>
 
@@ -69,14 +71,16 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 	//SPI1_Init();
 	//SPI1_SetSpeed(SPI_BaudRatePrescaler_2);
 	//LED_Init();		  		//初始化与LED连接的硬件接口
- 	LCD_Init();			   	//初始化LCD 		
+ 	LCDx_Init();			   	//初始化LCD 		
 	LCD_Display_Dir(1);
 	LCD_DisplayOn();
 	Adc_Init();
 	//KEY_Init();				//按键初始化		 	
  	//Adc_Init();		  		//ADC初始化
 	//Dac1_Init();		 	//DAC通道1初始化	
-	
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_CRC, ENABLE);
+	GUI_Init();
+	GUI_DispString("Hello STemWin!");
 	//GPIO_InitTypeDef SPI_GPIO_InitStructure;
 	//RCC_AHB1PeriphClockCmd(RCC_SPI_FLAG, ENABLE);
 	//SPI_GPIO_InitStructure.GPIO_Pin = SPI_FLAG;//CS,SCLK,MISO
@@ -86,18 +90,18 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 	//SPI_GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP; 
   //GPIO_Init(SPI_FLAG_PORT, &SPI_GPIO_InitStructure);	
 	
-	LCD_Clear(WHITE);
-	LCD_Clear(BLUE);
-	LCD_Clear(WHITE);
-	POINT_COLOR=DARKBLUE;
-	LCD_ShowString(30,20,420,24,24,(u8*)"Nanjing University");	
-	LCD_ShowString(30,50,420,24,24,"   EE Group 4 ");	
-	LCD_ShowString(30,80,420,24,24,"Minaduki Shigure");
-	POINT_COLOR=RED;//设置字体为红色 
-	LCD_ShowString(30,110,420,24,24,"LCD&ADC Speed Test");	
+	//LCD_Clear(WHITE);
+	//LCD_Clear(BLUE);
+	//LCD_Clear(WHITE);
+	//POINT_COLOR=DARKBLUE;
+	//LCD_ShowString(30,20,420,24,24,(u8*)"Nanjing University");	
+	//LCD_ShowString(30,50,420,24,24,"   EE Group 4 ");	
+	//LCD_ShowString(30,80,420,24,24,"Minaduki Shigure");
+	//POINT_COLOR=RED;//设置字体为红色 
+	//LCD_ShowString(30,110,420,24,24,"LCD&ADC Speed Test");	
 	//LCD_ShowString(60,130,200,16,16,"WK_UP:+  KEY0:-");	
 	//显示提示信息											      
-	POINT_COLOR=BLUE;//设置字体为蓝色
+	//POINT_COLOR=BLUE;//设置字体为蓝色
 	//LCD_ShowString(30,140,500,24,24,"Frequency:");	      
 	//LCD_ShowString(30,180,500,24,24,"Duty Ratio:");	      
 	//LCD_ShowString(30,220,500,24,24,"Time Interval:");
@@ -106,8 +110,8 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 	//LCD_ShowString(150,240,200,24,24,"ns");
   //LCD_ShowString(120,130,200,16,16,"Test");	
 	//LCD_ShowString(60,190,200,16,16,"OUT VOL:0.000V");
-  LCD_ShowString(30,140,200,24,24,"ADC RAW:");
-	
+  //LCD_ShowString(30,140,200,24,24,"ADC RAW:");
+
 	//DAC_SetChannel1Data(DAC_Align_12b_R, 0);//????0	   	      
 	//delay_ms(1000);
 	while(1)
@@ -115,10 +119,10 @@ uint64_t SPIx_SendReadByte16(uint64_t byte);
 		adcx=Get_Adc(ADC_Channel_1);
 		//LCD_ShowNum(150,140,adcx,4,24);
 		//delay_ms(1000);
-		LCD_DrawPoint(i++,adcx*480/4095);
+		//LCD_DrawPoint(i++,adcx*480/4095);
 		//LCD_Fill(i+30,0,i+31,480,WHITE);
 		//LCD_DrawLine(i++,adcxx*480/4095,i,adcx*480/4095);
-		//adcxx=adcx;
+		adcxx=adcx;
 		if(i>800)
 			i=0;
 		

@@ -3,7 +3,6 @@
 "..\obj\stm32f4xx_it.o"
 "..\obj\system_stm32f4xx.o"
 "..\obj\led.o"
-"..\obj\lcd.o"
 "..\obj\key.o"
 "..\obj\lcd12864.o"
 "..\obj\keyboard.o"
@@ -11,6 +10,7 @@
 "..\obj\adc.o"
 "..\obj\spi.o"
 "..\obj\pe4302.o"
+"..\obj\ili93xx.o"
 "..\obj\delay.o"
 "..\obj\sys.o"
 "..\obj\usart.o"
@@ -24,6 +24,10 @@
 "..\obj\stm32f4xx_exti.o"
 "..\obj\stm32f4xx_adc.o"
 "..\obj\stm32f4xx_spi.o"
+"..\emWin\STemWin522_CM4_Keil.lib"
+"..\obj\guiconf.o"
+"..\obj\lcdconf_flexcolor_template.o"
+"..\obj\gui_x.o"
 --strict --scatter "..\OBJ\LCD.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

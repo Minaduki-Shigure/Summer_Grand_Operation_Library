@@ -1,0 +1,9 @@
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\Config\LCDConf_FlexColor_Template.c
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\GUI.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\GUI_ConfDefaults.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\Config\GUIConf.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\GUI_Type.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\LCD.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\Global.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\GUI_Version.h
+..\obj\lcdconf_flexcolor_template.o: ..\emWin\STemWinLibrary522\inc\GUIDRV_FlexColor.h
