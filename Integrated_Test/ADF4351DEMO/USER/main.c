@@ -295,7 +295,7 @@ void Display_Wave(void)
 {
 	int i,y1,y2;
 	double display[20];
-	LCD_Fill(0,400,500,480,DARKBLUE);
+	LCD_Fill(0,0,Workspace_x_max,Workspace_y_max,DARKBLUE);
 	POINT_COLOR=WHITE;
 	LCD_DrawLine(0, 0, 500, 0);
 	LCD_DrawLine(0, 50, 500, 50);
