@@ -8,9 +8,9 @@
 #include "key.h"
 #include "LCD12864.h"
 //#include "KeyBoard.h"
+#include "EXTI.h"
+
 #include <math.h>
-#include "ADF4351.h"
-#include "PE4302.H"
 
 //definations -->
 #define XaxisHeight 12
@@ -19,49 +19,43 @@
 #define Workspace_x_max 500
 #define Workspace_y_max 400
 
-#define SPI_FLAG_PORT GPIOC	
-#define SPI_FLAG 	GPIO_Pin_7
-#define RCC_SPI_FLAG		RCC_AHB1Periph_GPIOC
+#define MODE_CHANGE_FLAG 0
+
+#define Y_MAXIMUM 4095
 
 //variables defination -->
-double ADF4351VALUE;
 extern int Enter_flag;
 int menu_flag;
+int Draw_finish_flag=1;
 int i=0;
 int X_pos=0;
-double Y_to_draw=100;
-int Data_in;
+float Y_to_draw=100;
+float Y_last=100;
+
+uint64_t data_f=0;
+u8 new_signal_flag=0;
+uint32_t Freq_cnt_1=0;
+uint32_t Freq_cnt_2=0;
+uint64_t Freq=0;
+uint16_t Y_data[20]={0};
 
 //function defination -->
 u8 touchandgive(void);
 u8	GT9147_Init(void);
 
 
-
-void LCD_Menu(unsigned int row_num, unsigned int col_num, char* ptr, char** menuitem);
-void AGC_FeedBack(float _x_);
-
-
 int main(void)
 {
 	char mode, key_char;
-	u16 PE4302VALUE_0=0;
-	u16 PE4302VALUE_1=0;
 	double input=0.0;
 	unsigned char* input_s ;
 	//char* menuitem[4]={"pattern1","pattern2"};
-	GPIO_InitTypeDef SPI_GPIO_InitStructure;
-	uint64_t Data=0;
-	float Data_show1=0;
-	int Data_show2=0;
 	
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);
 	delay_init(168);
 	uart_init(115200);
 	reset_init();
 	LCD_Init();
-	ADF4351Init();
-	PE_GPIO_Init();
 	LCD_Display_Dir(1);
 	LCD_DisplayOn();
 	Adc_Init();
@@ -71,24 +65,9 @@ int main(void)
 	LCD_Clear(DARKBLUE);
 	POINT_COLOR=RED;
 	BACK_COLOR=DARKBLUE;
-	ADF4351WriteFreq(40);
 	SPI1_Init();	
-	SPI1_SetSpeed(SPI_BaudRatePrescaler_2);
-	
-	RCC_AHB1PeriphClockCmd(RCC_SPI_FLAG, ENABLE);	
-	SPI_GPIO_InitStructure.GPIO_Pin = SPI_FLAG;//CS,SCLK,MISO  
-	SPI_GPIO_InitStructure.GPIO_Mode=GPIO_Mode_OUT;
-	SPI_GPIO_InitStructure.GPIO_OType=GPIO_OType_PP;	
-	SPI_GPIO_InitStructure.GPIO_Speed=GPIO_Speed_100MHz;
-	//SPI_GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;   
-	GPIO_Init(SPI_FLAG_PORT, &SPI_GPIO_InitStructure);	
-	
-	
-	
-	/*LCD_Set_Window(0,0,800,480);
-	POINT_COLOR=GRAY;
-	LCD_ShowxString(30,20,210,32,32,(u8*)"STM32F4",1);
-	LCD_ShowxString(30,60,272,32,32,(u8*)"80~100MHz Freq",1);*/
+	SPI1_SetSpeed(SPI_BaudRatePrescaler_64);
+	EXTIX_Init();
 	
 	POINT_COLOR=WHITE;
 //	menu_flag = 1;
@@ -140,21 +119,15 @@ int main(void)
 //						LCD_Fill(500,0,800,480,DARKBLUE);
 						
 						
-						
-						
-						
-						//SPI通信
-						GPIO_ResetBits(GPIOA,GPIO_Pin_3); // flag = 0	
-						Data=SPI_SendReadByte8x5(0x00000002);
-						GPIO_SetBits(GPIOA,GPIO_Pin_3); // flag = 1	
-						Data_show1=(double)Data;
-						LCD_ShowFloat(30,100,Data_show1,3,10,32);
-						Data_show2=(int)Data;
-						LCD_ShowNum(30,180,Data_show2,4,32);
+//						//SPI通信Template
+//						GPIO_ResetBits(GPIOA,GPIO_Pin_3); // flag = 0	
+//						Data=SPI_SendReadByte8x5(0x00000002);
+//						GPIO_SetBits(GPIOA,GPIO_Pin_3); // flag = 1	
+//						Data_show1=(double)Data;
+//						LCD_ShowFloat(30,100,Data_show1,3,10,32);
+//						Data_show2=(int)Data;
+//						LCD_ShowNum(30,180,Data_show2,4,32);
 		
-						
-						//触摸屏显示触摸位置
-						GT9147_Scan(0);
 					
 						//画矩形框
 						LCD_DrawRectangle(510, 10, 640, 110 );
@@ -206,217 +179,98 @@ int main(void)
 						LCD_DrawLine(400, 0, 400, 400);
 						LCD_DrawLine(450, 0, 450, 400);
 						LCD_DrawLine(500, 0, 500, 400);					//竖线
-						
-						
-						POINT_COLOR=WHITE;
-						LCD_DrawPoint(X_pos++, Y_to_draw*Workspace_y_max);
-						if(X_pos<Workspace_x_max-30){
-							LCD_Fill(X_pos+30, 0, X_pos+30, Workspace_y_max, DARKBLUE);
-							for(i=0; i<9; i++){
-								LCD_DrawPoint(X_pos+30, 50*i);
-							}		
+												
+						//Test data
+						//for(i=0; i<20; i++)
+						//{
+						//	Y_data[i]=200*i;
+						//}
+												
+						while(1)
+						{
+													
+							//触摸屏显示触摸位置
+							GT9147_Scan(0);
+							
+							
+								
+								
+							if(new_signal_flag)
+							{
+								LCD_Fill(30,170,200,200,BLUE);
+								LCD_Fill(30,280,200,460,BLUE);
+								
+								Freq = data_f;	//Test data
+								
+								LCD_ShowxFloat(30,170,Freq,2,10,32,1);
+								LCD_ShowxFloat(30,280,Y_data[0],2,10,32,1);
+								LCD_ShowxFloat(30,310,Y_data[1],2,10,32,1);
+								LCD_ShowxFloat(30,340,Y_data[2],2,10,32,1);
+								LCD_ShowxFloat(30,370,Y_data[3],2,10,32,1);
+								LCD_ShowxFloat(30,400,Y_data[4],2,10,32,1);
+								LCD_ShowxFloat(30,430,Y_data[5],2,10,32,1);
+								LCD_ShowxFloat(230,80,Y_data[6],2,10,32,1);
+								LCD_ShowxFloat(230,110,Y_data[7],2,10,32,1);
+								LCD_ShowxFloat(230,140,Y_data[8],2,10,32,1);
+								LCD_ShowxFloat(230,170,Y_data[9],2,10,32,1);
+								LCD_ShowxFloat(230,200,Y_data[10],2,10,32,1);
+								LCD_ShowxFloat(230,230,Y_data[11],2,10,32,1);
+								LCD_ShowxFloat(230,280,Y_data[12],2,10,32,1);
+								LCD_ShowxFloat(230,310,Y_data[13],2,10,32,1);
+								LCD_ShowxFloat(230,340,Y_data[14],2,10,32,1);
+								LCD_ShowxFloat(230,370,Y_data[15],2,10,32,1);
+								LCD_ShowxFloat(230,400,Y_data[16],2,10,32,1);
+								LCD_ShowxFloat(230,430,Y_data[17],2,10,32,1);
+								LCD_ShowxFloat(430,80,Y_data[18],2,10,32,1);
+								LCD_ShowxFloat(430,110,Y_data[19],2,10,32,1);
+	
+								new_signal_flag = 0;
+								
+								Y_last=Y_to_draw;
+								Y_to_draw=(float)Y_data[X_pos%20]/Y_MAXIMUM;
+								
+								POINT_COLOR=YELLOW;
+								//LCD_DrawPoint(X_pos++, Y_to_draw*Workspace_y_max);
+								LCD_DrawLine(X_pos, Y_last*Workspace_y_max, X_pos+1, Y_to_draw*Workspace_y_max);
+								X_pos++;
+								POINT_COLOR=WHITE;
+								
+								if(X_pos<Workspace_x_max-30){
+									LCD_Fill(X_pos+30, 0, X_pos+30, Workspace_y_max, DARKBLUE);
+									if(!((X_pos+30)%50))
+									{
+										LCD_DrawLine(X_pos+30, 0, X_pos+30, Workspace_y_max);
+									}
+									else
+									{
+										for(i=0; i<9; i++)
+										{
+											LCD_DrawPoint(X_pos+30, 50*i);
+										}	
+									}									
+								}
+								else{
+									LCD_Fill(X_pos+30-Workspace_x_max, 0, X_pos+30-Workspace_x_max, Workspace_y_max, DARKBLUE);
+									if(!((X_pos+30-Workspace_x_max)%50))
+									{
+										LCD_DrawLine(X_pos+30-Workspace_x_max, 0, X_pos+30-Workspace_x_max, Workspace_y_max);
+									}
+									else
+									{
+										for(i=0; i<9; i++)
+										{
+											LCD_DrawPoint(X_pos+30-Workspace_x_max, 50*i);
+										}	
+									}									
+								}
+								if(X_pos==Workspace_x_max)
+								{
+									Draw_finish_flag=1;
+									X_pos=0;
+								}
+								if(MODE_CHANGE_FLAG)
+									break;
+							}
 						}
-						else{
-							LCD_Fill(X_pos+30-Workspace_x_max, 0, X_pos+30-Workspace_x_max, Workspace_y_max, DARKBLUE);
-							for(i=0; i<9; i++){
-								LCD_DrawPoint(X_pos+30-Workspace_x_max, 50*i);
-							}		
-						}
-						if(X_pos==Workspace_x_max)
-							X_pos=0;
 	}
 }
-
-
-	
-	
-	
-	//				case 3://PE_1
-//				{
-//					if(Enter_flag==1&&!menu_flag)
-//					{
-//						LCD_Fill(0,100,800,480,DARKBLUE);
-//						LCD_Fill(300,0,800,100,DARKBLUE);
-//						LCD_ShowxString(30,100,272,32,32,(u8*)"PE_1 Gain Attenuation    ",0);
-//						LCD_ShowxString(160,180,272,32,32,(u8*)"dB",0);
-//						if(input>63||input==0)input=63;
-//						PE4302VALUE_0 = input;
-//						LCD_ShowxNum(120,180,input,2,32,0);
-//						PE4302_x_Set(PE4302VALUE_0, 0);
-//					}
-//				}break;
-//				case 4://PE_2
-//				{
-//					if(Enter_flag==1&&!menu_flag)
-//					{
-//						LCD_Fill(0,100,800,480,DARKBLUE);
-//						LCD_Fill(300,0,800,100,DARKBLUE);
-//						LCD_ShowxString(30,100,272,32,32,(u8*)"PE_2 Gain Attenuation    ",0);
-//						LCD_ShowxString(160,180,272,32,32,(u8*)"dB",0);
-//						if(input>63||input==0) input=63;
-//						PE4302VALUE_1 = input;
-//						LCD_ShowxNum(120,180,input,2,32,0);
-//						PE4302_x_Set(PE4302VALUE_1, 1);
-//					}
-//				}break;
-			
-//			}
-//			input_s = input_string_s(30,400);
-//			key_char = input_s[0];
-//			input = Char_2_Double(input_s);
-//			if(key_char=='B'&&Enter_flag==1) {menu_flag=1; input=0;}
-//		}
-//}
-
-
-
-//void LCD_Menu(unsigned int row_num, unsigned int col_num, char* ptr, char** menuitem)
-//{
-//	unsigned int delta_x, delta_y;
-//	unsigned char ptr_temp, ptr_last, certain_cursor=0;
-//	int i,j,i_last,j_last,i_temp,j_temp;//j colum   i row
-//	u16 point_color_temp;
-//	char key_char,count;
-//	ptr_temp=ptr_last=(*ptr-1)%(row_num*col_num)+1;
-//	point_color_temp=POINT_COLOR;
-//	POINT_COLOR=WHITE;
-//	LCD_Clear(BLUE);
-//	if(lcddev.dir==0){//vertical
-//		delta_x = SSD_VER_RESOLUTION/col_num;
-//		delta_y = SSD_HOR_RESOLUTION/row_num;
-//	}else{//horizontal
-//		delta_x = SSD_HOR_RESOLUTION/col_num;
-//		delta_y = SSD_VER_RESOLUTION/row_num;
-//	}
-//	for(i=0,count=0;i<col_num;i++){
-//		for(j=0;j<row_num;j++){
-//			LCD_Fill(i*delta_x,j*delta_y,(i+1)*delta_x-4,(j+1)*delta_y-4,GRAY);
-//			LCD_ShowString(i*delta_x+6,j*delta_y+delta_y/2,272,32,32,(u8*)menuitem[count++]);
-//		}
-//	}
-//	i_temp = (ptr_temp-1)/row_num;
-//	j_temp = (ptr_temp-1)%row_num;
-//	LCD_Fill(i_temp*delta_x,j_temp*delta_y,(i_temp+1)*delta_x-4,(j_temp+1)*delta_y-4,BLUE);
-//	LCD_ShowString(i_temp*delta_x+6,j_temp*delta_y+delta_y/2,272,32,32,(u8*)menuitem[ptr_temp-1]);
-//	while(1){
-//		ptr_last = ptr_temp;
-//		key_char=input_char();
-//		if(key_char=='2'){//up
-//			ptr_temp -= 1;
-//			if(!(ptr_temp%row_num))ptr_temp = ptr_temp+row_num;
-//			//ptr_temp%=(row_num*col_num);
-//		}else if(key_char=='8'){//down
-//			if(!(ptr_temp%row_num))ptr_temp = ptr_temp+1-row_num;
-//			else ptr_temp = ptr_temp+1;
-//			//ptr_temp%=(row_num*col_num);
-//		}else if(key_char=='4'){//left
-//			if(ptr_temp>row_num)ptr_temp -= row_num;
-//			else ptr_temp += (col_num-1)*row_num;
-//		}else if(key_char=='6'){//right
-//			if(ptr_temp<=(col_num-1)*row_num)ptr_temp += row_num;
-//			else ptr_temp -=(col_num-1)*row_num;
-//		}else if(key_char=='5'){
-//			certain_cursor = 1;
-//		}else if(key_char=='*')break;
-//		//if(ptr_temp==0)LCD_Clear(BLUE);
-//		i_last = (ptr_last-1)/row_num;
-//		j_last = (ptr_last-1)%row_num;
-//		i_temp = (ptr_temp-1)/row_num;
-//		j_temp = (ptr_temp-1)%row_num;
-//		if(certain_cursor){
-//			POINT_COLOR=RED;
-//			LCD_DrawLine(i_temp*delta_x+4, j_temp*delta_y+4, i_temp*delta_x+4, (j_temp+1)*delta_y-4);
-//			LCD_DrawLine(i_temp*delta_x+5, j_temp*delta_y+5, i_temp*delta_x+5, (j_temp+1)*delta_y-5);
-//			LCD_DrawLine(i_temp*delta_x+6, j_temp*delta_y+6, i_temp*delta_x+6, (j_temp+1)*delta_y-6);
-//			LCD_DrawLine(i_temp*delta_x+4, (j_temp+1)*delta_y-4, (i_temp+1)*delta_x-4, (j_temp+1)*delta_y-4);
-//			LCD_DrawLine(i_temp*delta_x+5, (j_temp+1)*delta_y-5, (i_temp+1)*delta_x-5, (j_temp+1)*delta_y-5);
-//			LCD_DrawLine(i_temp*delta_x+6, (j_temp+1)*delta_y-6, (i_temp+1)*delta_x-6, (j_temp+1)*delta_y-6);
-//			LCD_DrawLine((i_temp+1)*delta_x-4, (j_temp+1)*delta_y-4, (i_temp+1)*delta_x-4, j_temp*delta_y+4);
-//			LCD_DrawLine((i_temp+1)*delta_x-5, (j_temp+1)*delta_y-5, (i_temp+1)*delta_x-5, j_temp*delta_y+5);
-//			LCD_DrawLine((i_temp+1)*delta_x-6, (j_temp+1)*delta_y-6, (i_temp+1)*delta_x-6, j_temp*delta_y+6);
-//			LCD_DrawLine((i_temp+1)*delta_x-4, j_temp*delta_y+4, i_temp*delta_x+4, j_temp*delta_y+4);
-//			LCD_DrawLine((i_temp+1)*delta_x-5, j_temp*delta_y+5, i_temp*delta_x+5, j_temp*delta_y+5);
-//			LCD_DrawLine((i_temp+1)*delta_x-6, j_temp*delta_y+6, i_temp*delta_x+6, j_temp*delta_y+6);
-//			POINT_COLOR=point_color_temp;
-//			*ptr=ptr_temp;
-//			certain_cursor=0;
-//		}else if(ptr_last!=ptr_temp){
-//			LCD_Fill(i_last*delta_x,j_last*delta_y,(i_last+1)*delta_x-4,(j_last+1)*delta_y-4,GRAY);
-//			LCD_ShowString(i_last*delta_x+6,j_last*delta_y+delta_y/2,272,32,32,(u8*)menuitem[ptr_last-1]);
-//			LCD_Fill(i_temp*delta_x,j_temp*delta_y,(i_temp+1)*delta_x-4,(j_temp+1)*delta_y-4,BLUE);
-//			LCD_ShowString(i_temp*delta_x+6,j_temp*delta_y+delta_y/2,272,32,32,(u8*)menuitem[ptr_temp-1]);
-//		}
-//		ptr_last = ptr_temp;
-//	}
-//	
-//	menu_flag=0;
-//	LCD_Clear(DARKBLUE);
-//	POINT_COLOR=point_color_temp;
-//	//LCD_ShowxFloat(30,200,*ptr,1,10,32,0);
-//}
-
-////void AGC_FeedBack(float _x_)
-////{
-////	double val;
-////	double val_x_;
-////	double val_real;
-////	u16 adcx;
-////	u8 Set_db;
-////	static u8 PE_0_DB=0;
-////	static u8 PE_1_DB=0;
-////	u8 PE_DB_a=0;
-////	u8 PE_DB_b=0;
-////	double PE_delta=0;
-////	static u8 PE_temp=0;
-////	adcx=Get_Adc_Average(ADC_Channel_1,20,2);
-////	val=adcx*3.3/4069;
-////	val_real=pow(2.7182856,val/0.209)/160.7;
-////	val_x_=log10(160.7*_x_)/log10(2.7182856)*0.209;
-////	LCD_Set_Window(0,0,800,480);
-////	POINT_COLOR=WHITE;
-////	LCD_ShowString(30,40,210,32,24,(u8*)"STM32F4");
-////	LCD_ShowString(30,80,272,32,24,(u8*)"Get_adc");
-////	LCD_ShowNum(110,80,adcx,20,24);//显示AD数值
-////	LCD_ShowxFloat(300,120,val,3,10,24,0);
-////	LCD_ShowxFloat(400,120,val_real,3,10,24,0);
-////	//LCD_ShowNum(90,120,val_real,20,24);//显示检波电压值
-////	Set_db=40*log10(val);
-////	LCD_ShowString(30,160,210,32,24,(u8*)"Set_db");
-////	LCD_ShowNum(110,160,Set_db,20,24);
-////	LCD_ShowString(30,200,300,32,24,(u8*)"PE_1_DB");
-////	LCD_ShowNum(110,200,PE_0_DB,20,24);
-////	LCD_ShowString(30,240,300,32,24,(u8*)"PE_2_DB");
-////	LCD_ShowNum(110,240,PE_1_DB,20,24);
-////	LCD_ShowString(30,280,272,32,24,(u8*)"Expectation");
-////	LCD_ShowxFloat(300,280,_x_,3,10,24,0);//显示AD数值
-////	LCD_ShowxFloat(300,320,val_x_,3,10,24,0);
-////	
-////	if(!(val_x_-0.05<val&&val<val_x_+0.03)){
-////		PE_delta=20*(val-val_x_);
-////		PE_temp=PE_temp+PE_delta>120?120:(PE_temp+PE_delta);
-////		LCD_ShowxFloat(300,360,PE_temp,3,10,24,0);
-////		LCD_ShowxFloat(400,360,PE_delta,3,10,24,0);
-////		if(PE_temp<40){
-////			if(PE_DB_a<20){PE_DB_a=PE_temp;PE_DB_b=0;}
-////			else{PE_DB_a=20;PE_DB_b=PE_temp-20;}
-////		}
-////		else if(PE_temp<80){
-////			if(PE_DB_a<40){PE_DB_a=PE_temp-20;PE_DB_b=20;}
-////			else{PE_DB_a=40;PE_DB_b=PE_temp-40+20;}
-////		}
-////		else{
-////			if(PE_DB_a<60){PE_DB_a=PE_temp-40;PE_DB_b=40;}
-////			else{PE_DB_a=60;PE_DB_b=PE_temp-60+40;}
-////		}
-////		if(val>val_x_+0.03){
-////			PE_0_DB=PE_DB_a>60?60:PE_DB_a;
-////			PE_1_DB=PE_DB_b>60?60:PE_DB_b;
-////		}
-////		else{
-////			PE_1_DB=PE_DB_a>60?60:PE_DB_a;
-////			PE_0_DB=PE_DB_b>60?60:PE_DB_b;			
-////		}
-////		PE4302_x_Set(PE_0_DB,0);
-////		PE4302_x_Set(PE_1_DB,1);
-////	}
-////	

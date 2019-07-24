@@ -3,7 +3,7 @@
 ..\obj\lcd12864.o: ..\SYSTEM\sys\sys.h
 ..\obj\lcd12864.o: ..\USER\stm32f4xx.h
 ..\obj\lcd12864.o: ..\CORE\core_cm4.h
-..\obj\lcd12864.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\lcd12864.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\lcd12864.o: ..\CORE\core_cmInstr.h
 ..\obj\lcd12864.o: ..\CORE\core_cmFunc.h
 ..\obj\lcd12864.o: ..\CORE\core_cm4_simd.h

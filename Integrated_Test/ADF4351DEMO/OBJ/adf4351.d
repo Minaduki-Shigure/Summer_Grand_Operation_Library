@@ -3,7 +3,7 @@
 ..\obj\adf4351.o: ..\SYSTEM\sys\sys.h
 ..\obj\adf4351.o: ..\USER\stm32f4xx.h
 ..\obj\adf4351.o: ..\CORE\core_cm4.h
-..\obj\adf4351.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\adf4351.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\adf4351.o: ..\CORE\core_cmInstr.h
 ..\obj\adf4351.o: ..\CORE\core_cmFunc.h
 ..\obj\adf4351.o: ..\CORE\core_cm4_simd.h

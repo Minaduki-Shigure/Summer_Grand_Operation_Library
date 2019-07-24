@@ -3,7 +3,7 @@
 ..\obj\gt9147.o: ..\SYSTEM\sys\sys.h
 ..\obj\gt9147.o: ..\USER\stm32f4xx.h
 ..\obj\gt9147.o: ..\CORE\core_cm4.h
-..\obj\gt9147.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\gt9147.o: ..\CORE\core_cmInstr.h
 ..\obj\gt9147.o: ..\CORE\core_cmFunc.h
 ..\obj\gt9147.o: ..\CORE\core_cm4_simd.h
@@ -41,8 +41,8 @@
 ..\obj\gt9147.o: ..\HARDWARE\touch\ft5206.h
 ..\obj\gt9147.o: ..\HARDWARE\touch\ctiic.h
 ..\obj\gt9147.o: ..\SYSTEM\usart\usart.h
-..\obj\gt9147.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\gt9147.o: ..\SYSTEM\delay\delay.h
-..\obj\gt9147.o: D:\keil\ARM\ARMCC\Bin\..\include\string.h
+..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 ..\obj\gt9147.o: ..\HARDWARE\LCD\lcd.h
-..\obj\gt9147.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\gt9147.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
