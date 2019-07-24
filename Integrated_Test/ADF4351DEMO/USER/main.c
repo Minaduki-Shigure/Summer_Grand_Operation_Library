@@ -21,7 +21,7 @@
 
 #define MODE_CHANGE_FLAG 0
 
-#define Y_MAXIMUM 4095
+#define Y_MAXIMUM 20
 
 //variables defination -->
 extern int Enter_flag;
@@ -197,8 +197,11 @@ int main(void)
 								
 							if(new_signal_flag)
 							{
+
 								LCD_Fill(30,170,200,200,BLUE);
 								LCD_Fill(30,280,200,460,BLUE);
+								LCD_Fill(230,80,400,460,BLUE);
+								LCD_Fill(430,80,600,200,BLUE);
 								
 								Freq = data_f;	//Test data
 								
