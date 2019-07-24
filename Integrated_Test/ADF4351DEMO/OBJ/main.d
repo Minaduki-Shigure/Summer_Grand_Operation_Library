@@ -47,3 +47,9 @@
 ..\obj\main.o: ..\HARDWARE\LCD12864\LCD12864.h
 ..\obj\main.o: ..\HARDWARE\EXTI\EXTI.h
 ..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\main.o: ..\HARDWARE\touch\gt9147.h
+..\obj\main.o: ..\HARDWARE\touch\touch.h
+..\obj\main.o: ..\HARDWARE\touch\ott2001a.h
+..\obj\main.o: ..\HARDWARE\touch\ft5206.h
+..\obj\main.o: ..\HARDWARE\touch\ctiic.h
+..\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
