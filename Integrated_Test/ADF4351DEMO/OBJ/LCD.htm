@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\LCD.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LCD.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jul 24 07:50:28 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Wed Jul 24 11:33:35 2019
 <BR><P>
 <H3>Maximum Stack Usage =        352 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1489,8 +1489,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> touch.o(.data)
 </UL>
-<P><STRONG><a name="[13]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 842 bytes, Stack size 8 bytes, exti.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = EXTI0_IRQHandler &rArr; SPI1_ReadWriteByte
+<P><STRONG><a name="[13]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 860 bytes, Stack size 16 bytes, exti.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = EXTI0_IRQHandler &rArr; SPI1_ReadWriteByte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI1_ReadWriteByte
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EXTI_ClearITPendingBit
@@ -1499,7 +1499,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f40_41xxx.o(RESET)
 </UL>
-<P><STRONG><a name="[8d]"></a>EXTIX_Init</STRONG> (Thumb, 194 bytes, Stack size 24 bytes, exti.o(.text))
+<P><STRONG><a name="[8d]"></a>EXTIX_Init</STRONG> (Thumb, 192 bytes, Stack size 24 bytes, exti.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = EXTIX_Init &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SYSCFG_EXTILineConfig

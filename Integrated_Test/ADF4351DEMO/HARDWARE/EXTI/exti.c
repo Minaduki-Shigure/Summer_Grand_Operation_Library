@@ -22,45 +22,50 @@ uint64_t Data_R;
 //外部中断0服务程序
 void EXTI0_IRQHandler(void)
 {
-	GPIO_SetBits(GPIOA,GPIO_Pin_3);//flag = 1;
-	GPIO_ResetBits(GPIOA,GPIO_Pin_4);//cs = 0;
-	Data_R=SPI1_ReadWriteByte(0xA81A);
-	//Data_R=SPIx_SendReadByte36(0xF000F000F);
-	switch(Data_R&0xFF00)
+	int iii=0;
+	
+	for(iii=0;iii<28;iii++)
 	{
-		case 0x0100:Y_data[0]=Data_R&0x00FF;break;
-		case 0x0200:Y_data[1]=Data_R&0x00FF;break;
-		case 0x0300:Y_data[2]=Data_R&0x00FF;break;
-		case 0x0400:Y_data[3]=Data_R&0x00FF;break;
-		case 0x0500:Y_data[4]=Data_R&0x00FF;break;
-		case 0x0600:Y_data[5]=Data_R&0x00FF;break;
-		case 0x0700:Y_data[6]=Data_R&0x00FF;break;
-		case 0x0800:Y_data[7]=Data_R&0x00FF;break;
-		case 0x0900:Y_data[8]=Data_R&0x00FF;break;
-		case 0x0A00:Y_data[9]=Data_R&0x00FF;break;
-		case 0x0B00:Y_data[10]=Data_R&0x00FF;break;
-		case 0x0C00:Y_data[11]=Data_R&0x00FF;break;
-		case 0x0D00:Y_data[12]=Data_R&0x00FF;break;
-		case 0x0E00:Y_data[13]=Data_R&0x00FF;break;
-		case 0x0F00:Y_data[14]=Data_R&0x00FF;break;
-		case 0x1000:Y_data[15]=Data_R&0x00FF;break;
-		case 0x1100:Y_data[16]=Data_R&0x00FF;break;
-		case 0x1200:Y_data[17]=Data_R&0x00FF;break;
-		case 0x1300:Y_data[18]=Data_R&0x00FF;break;
-		case 0x1400:Y_data[19]=Data_R&0x00FF;break;
-		case 0x1500:Freq_cnt_1|=Data_R&0x00FF;break;
-		case 0x1600:Freq_cnt_1|=(Data_R&0x00FF)<<8;break;
-		case 0x1700:Freq_cnt_1|=(Data_R&0x00FF)<<16;break;
-		case 0x1800:Freq_cnt_1|=(Data_R&0x00FF)<<24;break;
-		case 0x1900:Freq_cnt_2|=Data_R&0x00FF;break;
-		case 0x1A00:Freq_cnt_2|=(Data_R&0x00FF)<<8;break;
-		case 0x1B00:Freq_cnt_2|=(Data_R&0x00FF)<<16;break;
-		case 0x1C00:Freq_cnt_2|=(Data_R&0x00FF)<<24;break;
-		default:break;
+		GPIO_SetBits(GPIOA,GPIO_Pin_3);//flag = 1;
+		GPIO_ResetBits(GPIOA,GPIO_Pin_4);//cs = 0;
+		Data_R=SPI1_ReadWriteByte(0xA81A);
+		//Data_R=SPIx_SendReadByte36(0xF000F000F);
+		switch(Data_R&0xFF00)
+		{
+			case 0x0100:Y_data[0]=Data_R&0x00FF;break;
+			case 0x0200:Y_data[1]=Data_R&0x00FF;break;
+			case 0x0300:Y_data[2]=Data_R&0x00FF;break;
+			case 0x0400:Y_data[3]=Data_R&0x00FF;break;
+			case 0x0500:Y_data[4]=Data_R&0x00FF;break;
+			case 0x0600:Y_data[5]=Data_R&0x00FF;break;
+			case 0x0700:Y_data[6]=Data_R&0x00FF;break;
+			case 0x0800:Y_data[7]=Data_R&0x00FF;break;
+			case 0x0900:Y_data[8]=Data_R&0x00FF;break;
+			case 0x0A00:Y_data[9]=Data_R&0x00FF;break;
+			case 0x0B00:Y_data[10]=Data_R&0x00FF;break;
+			case 0x0C00:Y_data[11]=Data_R&0x00FF;break;
+			case 0x0D00:Y_data[12]=Data_R&0x00FF;break;
+			case 0x0E00:Y_data[13]=Data_R&0x00FF;break;
+			case 0x0F00:Y_data[14]=Data_R&0x00FF;break;
+			case 0x1000:Y_data[15]=Data_R&0x00FF;break;
+			case 0x1100:Y_data[16]=Data_R&0x00FF;break;
+			case 0x1200:Y_data[17]=Data_R&0x00FF;break;
+			case 0x1300:Y_data[18]=Data_R&0x00FF;break;
+			case 0x1400:Y_data[19]=Data_R&0x00FF;break;
+			case 0x1500:Freq_cnt_1|=Data_R&0x00FF;break;
+			case 0x1600:Freq_cnt_1|=(Data_R&0x00FF)<<8;break;
+			case 0x1700:Freq_cnt_1|=(Data_R&0x00FF)<<16;break;
+			case 0x1800:Freq_cnt_1|=(Data_R&0x00FF)<<24;break;
+			case 0x1900:Freq_cnt_2|=Data_R&0x00FF;break;
+			case 0x1A00:Freq_cnt_2|=(Data_R&0x00FF)<<8;break;
+			case 0x1B00:Freq_cnt_2|=(Data_R&0x00FF)<<16;break;
+			case 0x1C00:Freq_cnt_2|=(Data_R&0x00FF)<<24;break;
+			default:break;
+		}
+		data_f++;
+		GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
+		GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
 	}
-	data_f++;
-	GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
-	GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
 	new_signal_flag = 1;
 	EXTI_ClearITPendingBit(EXTI_Line0); //清除LINE0上的中断标志位 
 }	
