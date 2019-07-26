@@ -19,7 +19,7 @@ extern uint64_t data_f;
 extern uint64_t Freq;
 extern uint32_t Freq_cnt_1;
 extern uint32_t Freq_cnt_2;
-extern uint16_t Y_data[20];
+extern uint16_t data[28];
 
 void EXTIX_Init(void);	//外部中断初始化		 					    
 #endif

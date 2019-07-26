@@ -204,8 +204,8 @@ u8 GT9147_Scan(u8 mode)
 					POINT_COLOR=RED;
 					//LCD_ShowString(600,370,100,24,24,(u8*)tp_dev.x[i]);
 					//LCD_ShowString(700,370,100,24,24,(u8*)tp_dev.y[i]);
-					LCD_ShowNum(500,370,tp_dev.x[i],8,24);
-					LCD_ShowNum(600,370,tp_dev.y[i],8,24);
+//					LCD_ShowNum(500,370,tp_dev.x[i],8,24);
+//					LCD_ShowNum(600,370,tp_dev.y[i],8,24);
 					POINT_COLOR=WHITE;
 					//printf("x[%d]:%d,y[%d]:%d\r\n",i,tp_dev.x[i],i,tp_dev.y[i]);
 				}			
