@@ -3,7 +3,7 @@
 ..\obj\ott2001a.o: ..\SYSTEM\sys\sys.h
 ..\obj\ott2001a.o: ..\USER\stm32f4xx.h
 ..\obj\ott2001a.o: ..\CORE\core_cm4.h
-..\obj\ott2001a.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\ott2001a.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\ott2001a.o: ..\CORE\core_cmInstr.h
 ..\obj\ott2001a.o: ..\CORE\core_cmFunc.h
 ..\obj\ott2001a.o: ..\CORE\core_cm4_simd.h
@@ -41,5 +41,5 @@
 ..\obj\ott2001a.o: ..\HARDWARE\touch\ft5206.h
 ..\obj\ott2001a.o: ..\HARDWARE\touch\ctiic.h
 ..\obj\ott2001a.o: ..\SYSTEM\usart\usart.h
-..\obj\ott2001a.o: D:\keil\ARM\ARMCC\Bin\..\include\stdio.h
+..\obj\ott2001a.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\ott2001a.o: ..\SYSTEM\delay\delay.h
