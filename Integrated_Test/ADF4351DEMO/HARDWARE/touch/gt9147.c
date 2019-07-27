@@ -5,6 +5,8 @@
 #include "delay.h" 
 #include "string.h" 
 #include "lcd.h" 
+
+#define TOUCH_FEEDBACK
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -201,12 +203,14 @@ u8 GT9147_Scan(u8 mode)
 						tp_dev.x[i]=((u16)buf[1]<<8)+buf[0];
 						tp_dev.y[i]=((u16)buf[3]<<8)+buf[2];
 					} 
-					POINT_COLOR=RED;
+					//POINT_COLOR=RED;
 					//LCD_ShowString(600,370,100,24,24,(u8*)tp_dev.x[i]);
 					//LCD_ShowString(700,370,100,24,24,(u8*)tp_dev.y[i]);
 //					LCD_ShowNum(500,370,tp_dev.x[i],8,24);
 //					LCD_ShowNum(600,370,tp_dev.y[i],8,24);
+					#ifdef TOUCH_FEEDBACK
 					POINT_COLOR=WHITE;
+					#endif
 					//printf("x[%d]:%d,y[%d]:%d\r\n",i,tp_dev.x[i],i,tp_dev.y[i]);
 				}			
 			} 

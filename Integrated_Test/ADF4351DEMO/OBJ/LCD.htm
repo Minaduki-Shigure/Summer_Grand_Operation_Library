@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\LCD.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\LCD.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat Jul 27 08:10:06 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sun Jul 28 06:56:10 2019
 <BR><P>
 <H3>Maximum Stack Usage =        672 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -292,7 +292,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
-<P><STRONG><a name="[80]"></a>Display_Wave</STRONG> (Thumb, 1290 bytes, Stack size 328 bytes, main.o(.text))
+<P><STRONG><a name="[80]"></a>Display_Wave</STRONG> (Thumb, 1326 bytes, Stack size 328 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 656<LI>Call Chain = Display_Wave &rArr; LCD_ShowxFloat &rArr; LCD_ShowChar &rArr; LCD_Fast_DrawPoint &rArr; LCD_WR_DATA
 </UL>
 <BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ShowxNum
@@ -300,6 +300,7 @@ Global Symbols
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Fill
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawPoint
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_DrawLine
+<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GT9147_Scan
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdrcmple
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cdcmple
@@ -326,7 +327,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[7a]"></a>main</STRONG> (Thumb, 1106 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[7a]"></a>main</STRONG> (Thumb, 1100 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 672 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Display_Wave &rArr; LCD_ShowxFloat &rArr; LCD_ShowChar &rArr; LCD_Fast_DrawPoint &rArr; LCD_WR_DATA
 </UL>
@@ -1321,13 +1322,14 @@ Global Symbols
 <LI><a href="#[3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TP_Init
 </UL>
 
-<P><STRONG><a name="[62]"></a>GT9147_Scan</STRONG> (Thumb, 510 bytes, Stack size 32 bytes, gt9147.o(.text))
+<P><STRONG><a name="[62]"></a>GT9147_Scan</STRONG> (Thumb, 504 bytes, Stack size 32 bytes, gt9147.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = GT9147_Scan &rArr; GT9147_RD_Reg &rArr; CT_IIC_Read_Byte &rArr; CT_IIC_NAck &rArr; CT_Delay
 </UL>
 <BR>[Calls]<UL><LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GT9147_RD_Reg
 <LI><a href="#[10f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GT9147_WR_Reg
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Display_Wave
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> touch.o(.text)
 </UL>

@@ -2,7 +2,7 @@
 #include "stdlib.h"
 #include "font.h" 
 #include "usart.h"	 
-#include "delay.h"	 
+#include "delay.h"	
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -2767,7 +2767,7 @@ void LCD_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 color)
 		{
 		 	LCD_SetCursor(sx,i);      				//设置光标位置 
 			LCD_WriteRAM_Prepare();     			//开始写入GRAM	  
-			for(j=0;j<xlen;j++)LCD->LCD_RAM=color;	//显示颜色 	    
+			for(j=0;j<xlen;j++)LCD->LCD_RAM=color;	//显示颜色 	
 		}
 	}	 
 }  

@@ -163,8 +163,7 @@ void Display_Wave(void)
 	
 	//display wave
 	POINT_COLOR=GREEN;
-	for(i=0; i<20; i++)display[i
-	 ]=(10-display[i])*20;								//change to coordinate
+	for(i=0; i<20; i++)display[i]=(10-display[i])*20;								//change to coordinate
 	pixel_step=25*100000000.0/(cnt2*hori_div);
 	LCD_ShowxFloat(140,360,pixel_step,3,7,28,1);
 	y1=display[0];	
@@ -178,6 +177,7 @@ void Display_Wave(void)
 				if(!(i==0&&j==0&&k==0))
 					LCD_DrawLine((int)(pixel_step*(20*j+(i))),y1,(int)(pixel_step*(20*j+(i+1))),y2);
 				y1=y2;
+				GT9147_Scan(0);
 			}
 			if((20*pixel_step*j+pixel_step*(i))>=500)break;
 						X_pos=pixel_step*(20*j+(i));
@@ -185,16 +185,22 @@ void Display_Wave(void)
 			{
 						if(X_pos<Workspace_x_max-1)
 						{
+							GT9147_Scan(0);			
 							LCD_Fill(X_pos+1, 0, X_pos+1, Workspace_y_max, BLACK);
 							if(!((X_pos+1)%50))
 							{
-								for(b=1;b<41;b++)LCD_DrawPoint(X_pos+1,10*b);
+								for(b=1;b<41;b++)
+								{
+									LCD_DrawPoint(X_pos+1,10*b);
+									GT9147_Scan(0);			
+								}
 							}
 							else if(!((X_pos+1)%10))
 							{
 								for(a=0; a<9; a++)
 								{
 									LCD_DrawPoint(X_pos+1, 50*a);
+									GT9147_Scan(0);			
 								}	
 							}
 						}
@@ -203,13 +209,18 @@ void Display_Wave(void)
 							LCD_Fill(X_pos+1-Workspace_x_max, 0, X_pos+1-Workspace_x_max, Workspace_y_max, BLACK);
 							if(!((X_pos+1-Workspace_x_max)%50))
 							{
-								for(b=1;b<41;b++)LCD_DrawPoint(X_pos+1-Workspace_x_max,10*b);
+								for(b=1;b<41;b++)
+								{
+									LCD_DrawPoint(X_pos+1-Workspace_x_max,10*b);
+									GT9147_Scan(0);			
+								}
 							}
 							else if(!((X_pos+1-Workspace_x_max)%10))
 							{
 								for(a=0; a<9; a++)
 								{
 									LCD_DrawPoint(X_pos+1-Workspace_x_max, 50*a);
+									GT9147_Scan(0);			
 								}	
 							}	
 						}
