@@ -42,7 +42,9 @@ u8 new_signal_flag=0;
 uint32_t Freq_cnt_1=0;
 uint32_t Freq_cnt_2=0;
 uint64_t Freq=0;
-uint16_t data[28]={0,23,48,89,120,170,210,230,0,0,240,200,197,145,123,110,97,78,32,0, 1,2,3,4,0xA,0xB,0xC,0xD};
+//uint16_t data[28]={0,23,48,89,120,170,210,230,0,0,240,200,197,145,123,110,97,78,32,0, 1,2,3,4,0xA,0xB,0xC,0xD};
+uint16_t data[25][28]={0,23,48,89,120,170,210,230,0,0,240,200,197,145,123,110,97,78,32,0, 1,2,3,4,0xA,0xB,0xC,0xD};
+u8 sample_mode = EQUIVALENT;
 
 //function defination -->
 u8 touchandgive(void);
@@ -144,14 +146,14 @@ void Display_Wave(void)
 	u16 y1,y2;
 	u32 cnt1,cnt2;
 	double pixel_step,display[28];
-	cnt1=((u32)data[20])|((u32)data[21]<<8)|((u32)data[22]<<16)|((u32)data[23]<<24);
-	cnt2=((u32)data[24])|((u32)data[25]<<8)|((u32)data[26]<<16)|((u32)data[27]<<24);
+	//cnt1=((u32)data[20])|((u32)data[21]<<8)|((u32)data[22]<<16)|((u32)data[23]<<24);
+	//cnt2=((u32)data[24])|((u32)data[25]<<8)|((u32)data[26]<<16)|((u32)data[27]<<24);
 	
 	//display frequency
 	POINT_COLOR=RED;
-	LCD_ShowxNum(30,400,cnt1,20,28,1);
-	LCD_ShowxNum(140,400,cnt2,20,28,1);
-	LCD_ShowxNum(140,380,cnt2*10000.0/cnt1,20,28,1);
+	//LCD_ShowxNum(30,400,cnt1,20,28,1);
+	//LCD_ShowxNum(140,400,cnt2,20,28,1);
+	//LCD_ShowxNum(140,380,cnt2*10000.0/cnt1,20,28,1);
 
 	for(i=0; i<20; i++)display[i]=data[i]*10/256.0-5;								//change to voltage
 	

@@ -3,6 +3,7 @@
 #include "led.h"
 #include "spi.h"
 
+#define FREQ_JUDGE 50000
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F407开发板
@@ -23,6 +24,7 @@ uint64_t Data_R;
 void EXTI0_IRQHandler(void)
 {
 	int iii=0;
+	int jjj=0;
 	
 	for(iii=0;iii<28;iii++)
 	{
@@ -32,39 +34,86 @@ void EXTI0_IRQHandler(void)
 		//Data_R=SPIx_SendReadByte36(0xF000F000F);
 		switch(Data_R&0xFF00)
 		{
-			case 0x0100:data[0]=Data_R&0x00FF;break;
-			case 0x0200:data[1]=Data_R&0x00FF;break;
-			case 0x0300:data[2]=Data_R&0x00FF;break;
-			case 0x0400:data[3]=Data_R&0x00FF;break;
-			case 0x0500:data[4]=Data_R&0x00FF;break;
-			case 0x0600:data[5]=Data_R&0x00FF;break;
-			case 0x0700:data[6]=Data_R&0x00FF;break;
-			case 0x0800:data[7]=Data_R&0x00FF;break;
-			case 0x0900:data[8]=Data_R&0x00FF;break;
-			case 0x0A00:data[9]=Data_R&0x00FF;break;
-			case 0x0B00:data[10]=Data_R&0x00FF;break;
-			case 0x0C00:data[11]=Data_R&0x00FF;break;
-			case 0x0D00:data[12]=Data_R&0x00FF;break;
-			case 0x0E00:data[13]=Data_R&0x00FF;break;
-			case 0x0F00:data[14]=Data_R&0x00FF;break;
-			case 0x1000:data[15]=Data_R&0x00FF;break;
-			case 0x1100:data[16]=Data_R&0x00FF;break;
-			case 0x1200:data[17]=Data_R&0x00FF;break;
-			case 0x1300:data[18]=Data_R&0x00FF;break;
-			case 0x1400:data[19]=Data_R&0x00FF;break;
-			case 0x1500:data[20]=Data_R&0x00FF;break;
-			case 0x1600:data[21]=Data_R&0x00FF;break;
-			case 0x1700:data[22]=Data_R&0x00FF;break;
-			case 0x1800:data[23]=Data_R&0x00FF;break;
-			case 0x1900:data[24]=Data_R&0x00FF;break;
-			case 0x1A00:data[25]=Data_R&0x00FF;break;
-			case 0x1B00:data[26]=Data_R&0x00FF;break;
-			case 0x1C00:data[27]=Data_R&0x00FF;break;
+			case 0x0100:data[0][0]=Data_R&0x00FF;break;
+			case 0x0200:data[0][1]=Data_R&0x00FF;break;
+			case 0x0300:data[0][2]=Data_R&0x00FF;break;
+			case 0x0400:data[0][3]=Data_R&0x00FF;break;
+			case 0x0500:data[0][4]=Data_R&0x00FF;break;
+			case 0x0600:data[0][5]=Data_R&0x00FF;break;
+			case 0x0700:data[0][6]=Data_R&0x00FF;break;
+			case 0x0800:data[0][7]=Data_R&0x00FF;break;
+			case 0x0900:data[0][8]=Data_R&0x00FF;break;
+			case 0x0A00:data[0][9]=Data_R&0x00FF;break;
+			case 0x0B00:data[0][10]=Data_R&0x00FF;break;
+			case 0x0C00:data[0][11]=Data_R&0x00FF;break;
+			case 0x0D00:data[0][12]=Data_R&0x00FF;break;
+			case 0x0E00:data[0][13]=Data_R&0x00FF;break;
+			case 0x0F00:data[0][14]=Data_R&0x00FF;break;
+			case 0x1000:data[0][15]=Data_R&0x00FF;break;
+			case 0x1100:data[0][16]=Data_R&0x00FF;break;
+			case 0x1200:data[0][17]=Data_R&0x00FF;break;
+			case 0x1300:data[0][18]=Data_R&0x00FF;break;
+			case 0x1400:data[0][19]=Data_R&0x00FF;break;
+			case 0x1500:data[0][20]=Data_R&0x00FF;break;
+			case 0x1600:data[0][21]=Data_R&0x00FF;break;
+			case 0x1700:data[0][22]=Data_R&0x00FF;break;
+			case 0x1800:data[0][23]=Data_R&0x00FF;break;
+			case 0x1900:data[0][24]=Data_R&0x00FF;break;
+			case 0x1A00:data[0][25]=Data_R&0x00FF;break;
+			case 0x1B00:data[0][26]=Data_R&0x00FF;break;
+			case 0x1C00:data[0][27]=Data_R&0x00FF;break;
 			default:break;
 		}
 		data_f++;
 		GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
 		GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
+	}
+	Freq=((u32)data[0][24])|((u32)data[0][25]<<8)|((u32)data[0][26]<<16)|((u32)data[0][27]<<24);	//The freq is here.
+	sample_mode=(Freq>FREQ_JUDGE)?EQUIVALENT:CONTINUOUS;
+	if(sample_mode == CONTINUOUS)
+	{
+		for(jjj=1;jjj<25;jjj++)
+		{
+			GPIO_SetBits(GPIOA,GPIO_Pin_3);//flag = 1;
+			GPIO_ResetBits(GPIOA,GPIO_Pin_4);//cs = 0;
+			Data_R=SPI1_ReadWriteByte(0xA81A);
+			//Data_R=SPIx_SendReadByte36(0xF000F000F);
+			switch(Data_R&0xFF00)
+			{
+				case 0x0100:data[jjj][0]=Data_R&0x00FF;break;
+				case 0x0200:data[jjj][1]=Data_R&0x00FF;break;
+				case 0x0300:data[jjj][2]=Data_R&0x00FF;break;
+				case 0x0400:data[jjj][3]=Data_R&0x00FF;break;
+				case 0x0500:data[jjj][4]=Data_R&0x00FF;break;
+				case 0x0600:data[jjj][5]=Data_R&0x00FF;break;
+				case 0x0700:data[jjj][6]=Data_R&0x00FF;break;
+				case 0x0800:data[jjj][7]=Data_R&0x00FF;break;
+				case 0x0900:data[jjj][8]=Data_R&0x00FF;break;
+				case 0x0A00:data[jjj][9]=Data_R&0x00FF;break;
+				case 0x0B00:data[jjj][10]=Data_R&0x00FF;break;
+				case 0x0C00:data[jjj][11]=Data_R&0x00FF;break;
+				case 0x0D00:data[jjj][12]=Data_R&0x00FF;break;
+				case 0x0E00:data[jjj][13]=Data_R&0x00FF;break;
+				case 0x0F00:data[jjj][14]=Data_R&0x00FF;break;
+				case 0x1000:data[jjj][15]=Data_R&0x00FF;break;
+				case 0x1100:data[jjj][16]=Data_R&0x00FF;break;
+				case 0x1200:data[jjj][17]=Data_R&0x00FF;break;
+				case 0x1300:data[jjj][18]=Data_R&0x00FF;break;
+				case 0x1400:data[jjj][19]=Data_R&0x00FF;break;
+				case 0x1500:data[jjj][20]=Data_R&0x00FF;break;
+				case 0x1600:data[jjj][21]=Data_R&0x00FF;break;
+				case 0x1700:data[jjj][22]=Data_R&0x00FF;break;
+				case 0x1800:data[jjj][23]=Data_R&0x00FF;break;
+				case 0x1900:data[jjj][24]=Data_R&0x00FF;break;
+				case 0x1A00:data[jjj][25]=Data_R&0x00FF;break;
+				case 0x1B00:data[jjj][26]=Data_R&0x00FF;break;
+				case 0x1C00:data[jjj][27]=Data_R&0x00FF;break;
+				default:break;
+			}
+			data_f++;
+			GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
+			GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
+		}
 	}
 	new_signal_flag = 1;
 	EXTI_ClearITPendingBit(EXTI_Line0); //清除LINE0上的中断标志位 

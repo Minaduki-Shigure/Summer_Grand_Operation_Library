@@ -14,12 +14,16 @@
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 	 
 
+#define EQUIVALENT 0
+#define CONTINUOUS 1
+
 extern u8 new_signal_flag;
 extern uint64_t data_f;
 extern uint64_t Freq;
 extern uint32_t Freq_cnt_1;
 extern uint32_t Freq_cnt_2;
-extern uint16_t data[28];
+extern uint16_t data[25][28];
+extern u8 sample_mode;
 
 void EXTIX_Init(void);	//外部中断初始化		 					    
 #endif
