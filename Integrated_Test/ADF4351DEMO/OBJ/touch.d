@@ -3,7 +3,7 @@
 ..\obj\touch.o: ..\SYSTEM\sys\sys.h
 ..\obj\touch.o: ..\USER\stm32f4xx.h
 ..\obj\touch.o: ..\CORE\core_cm4.h
-..\obj\touch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\touch.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\touch.o: ..\CORE\core_cmInstr.h
 ..\obj\touch.o: ..\CORE\core_cmFunc.h
 ..\obj\touch.o: ..\CORE\core_cm4_simd.h
@@ -40,8 +40,8 @@
 ..\obj\touch.o: ..\HARDWARE\touch\gt9147.h
 ..\obj\touch.o: ..\HARDWARE\touch\ft5206.h
 ..\obj\touch.o: ..\HARDWARE\LCD\lcd.h
-..\obj\touch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\touch.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h
 ..\obj\touch.o: ..\SYSTEM\delay\delay.h
-..\obj\touch.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+..\obj\touch.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
 ..\obj\touch.o: ..\HARDWARE\touch\24cxx.h
 ..\obj\touch.o: ..\HARDWARE\IIC\myiic.h

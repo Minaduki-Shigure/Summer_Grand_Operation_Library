@@ -14,6 +14,7 @@
 #include "touch.h"
 #include "ctiic.h"
 #include "string.h" 
+#include "exti.h"
 
 //definations -->
 #define XaxisHeight 12
@@ -107,7 +108,7 @@ int main(void)
 								LCD_ShowxString(670,180,100,24,24,(u8*)"200us/div",0);
 								LCD_ShowxString(670,420,100,24,24,(u8*)"100ns/div",0);
 								GT9147_Scan(0);
-								hori_div=2000;
+								hori_div=20000000;
 								Display_Wave();
 								POINT_COLOR=RED;	
 								LCD_ShowxString(690,300,100,24,24,(u8*)"2us/div",0);
@@ -119,7 +120,7 @@ int main(void)
 								LCD_ShowxString(690,300,100,24,24,(u8*)"2us/div",0);
 								LCD_ShowxString(670,420,100,24,24,(u8*)"100ns/div",0);
 								GT9147_Scan(0);
-								hori_div=200000;
+								hori_div=190000;
 								Display_Wave();
 								POINT_COLOR=RED;	
 								LCD_ShowxString(670,180,100,24,24,(u8*)"200us/div",0);
@@ -131,7 +132,7 @@ int main(void)
 								LCD_ShowxString(690,300,100,24,24,(u8*)"2us/div",0);
 								LCD_ShowxString(670,420,100,24,24,(u8*)"100ns/div",0);
 								GT9147_Scan(0);
-								hori_div=20000000;
+								hori_div=1000;
 								Display_Wave();
 								POINT_COLOR=RED;	
 								LCD_ShowxString(690,60,100,24,24,(u8*)"20ms/div",0);
@@ -143,20 +144,22 @@ void Display_Wave(void)
 {
 	int i,j,k;
 	int b;
+	int c;
 	u16 y1,y2;
 	u32 cnt1,cnt2;
-	double pixel_step,display[28];
-	//cnt1=((u32)data[20])|((u32)data[21]<<8)|((u32)data[22]<<16)|((u32)data[23]<<24);
-	//cnt2=((u32)data[24])|((u32)data[25]<<8)|((u32)data[26]<<16)|((u32)data[27]<<24);
+	double pixel_step,display[20];
+	cnt1=((u32)data[0][20])|((u32)data[0][21]<<8)|((u32)data[0][22]<<16)|((u32)data[0][23]<<24);
+	cnt2=((u32)data[0][24])|((u32)data[0][25]<<8)|((u32)data[0][26]<<16)|((u32)data[0][27]<<24);
 	
 	//display frequency
 	POINT_COLOR=RED;
 	//LCD_ShowxNum(30,400,cnt1,20,28,1);
 	//LCD_ShowxNum(140,400,cnt2,20,28,1);
 	//LCD_ShowxNum(140,380,cnt2*10000.0/cnt1,20,28,1);
-
-	for(i=0; i<20; i++)display[i]=data[i]*10/256.0-5;								//change to voltage
 	
+	if(sample_mode==0)
+	{
+		for(i=0; i<20; i++)display[i]=data[0][i]*10/256.0-5;								//change to voltage	
 //	//display voltage
 //	LCD_Fill(30,70,90,100,BLACK);
 //	LCD_Fill(30,400,770,460,BLACK);
@@ -174,7 +177,7 @@ void Display_Wave(void)
 		for(j=0;;j++)
 		{
 			for(i=0;(i<20)&&((20*pixel_step*j+pixel_step*(i))<500); i++)
-			{
+			{ 
 				y2=display[i];//+k
 				if(!(i==0&&j==0&&k==0))
 					LCD_DrawLine((int)(pixel_step*(20*j+(i))),y1,(int)(pixel_step*(20*j+(i+1))),y2);
@@ -205,7 +208,7 @@ void Display_Wave(void)
 									GT9147_Scan(0);			
 								}	
 							}
-						}
+						}  
 						else
 						{
 							LCD_Fill(X_pos+1-Workspace_x_max, 0, X_pos+1-Workspace_x_max, Workspace_y_max, BLACK);
@@ -226,9 +229,47 @@ void Display_Wave(void)
 								}	
 							}	
 						}
-					}
+			}
 		}
-}
+	}
+	if(sample_mode==1)
+	{
+	for(j=0;j<25;j++)
+		{
+		POINT_COLOR=GREEN;
+		for(i=0; i<20; i++)display[i]=data[j][i]*10/256.0-5;
+		for(i=0; i<20; i++)display[i]=(10-display[i])*20;	
+		y1=display[0];
+		for(c=0;c<20;c++)
+			{
+				y2=display[c];
+				if(!(c==0))
+					LCD_DrawLine((int)(j*c),y1,(int)(j*(c+1)),y2);
+					y1=y2;
+					GT9147_Scan(0);	
+			}
+		if((20*j+c)>=500)break;
+						//描点画图
+				
+			POINT_COLOR=WHITE;
+				LCD_DrawPoint(X_pos++, Y_to_draw*Workspace_y_max);
+				if(X_pos<Workspace_x_max-30){
+					LCD_Fill(X_pos+30, 0, X_pos+30, Workspace_y_max, DARKBLUE);
+					for(i=0; i<9; i++){
+						LCD_DrawPoint(X_pos+30, 50*i);
+					}		
+				}
+				else{
+					LCD_Fill(X_pos+30-Workspace_x_max, 0, X_pos+30-Workspace_x_max, Workspace_y_max, DARKBLUE);
+					for(i=0; i<9; i++){
+						LCD_DrawPoint(X_pos+30-Workspace_x_max, 50*i);
+					}		
+				}
+				if(X_pos==Workspace_x_max)
+					X_pos=0;
+			}
+		}	
+	}
 //}
 
 void Filter_Menu(void)
@@ -277,7 +318,7 @@ void Filter_Menu(void)
 						LCD_DrawLine(0, 400, 500, 400);					//横线
 						
 						LCD_DrawLine(0, 0, 0, 400);
-						LCD_DrawLine(500, 0, 500, 400);					//竖线					
+						LCD_DrawLine(500, 0, 500  , 400);					//竖线					
 						
 }
 

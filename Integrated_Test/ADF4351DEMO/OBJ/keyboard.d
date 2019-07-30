@@ -2,7 +2,7 @@
 ..\obj\keyboard.o: ..\HARDWARE\KeyBoard\KeyBoard.h
 ..\obj\keyboard.o: ..\USER\stm32f4xx.h
 ..\obj\keyboard.o: ..\CORE\core_cm4.h
-..\obj\keyboard.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\keyboard.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
 ..\obj\keyboard.o: ..\CORE\core_cmInstr.h
 ..\obj\keyboard.o: ..\CORE\core_cmFunc.h
 ..\obj\keyboard.o: ..\CORE\core_cm4_simd.h
@@ -39,4 +39,4 @@
 ..\obj\keyboard.o: ..\SYSTEM\delay\delay.h
 ..\obj\keyboard.o: ..\HARDWARE\LCD12864\LCD12864.h
 ..\obj\keyboard.o: ..\HARDWARE\LCD\lcd.h
-..\obj\keyboard.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\keyboard.o: D:\keil\ARM\ARMCC\Bin\..\include\stdlib.h

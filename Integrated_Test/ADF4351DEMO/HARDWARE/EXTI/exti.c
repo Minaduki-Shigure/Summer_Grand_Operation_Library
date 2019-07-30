@@ -74,42 +74,46 @@ void EXTI0_IRQHandler(void)
 	{
 		for(jjj=1;jjj<25;jjj++)
 		{
-			GPIO_SetBits(GPIOA,GPIO_Pin_3);//flag = 1;
-			GPIO_ResetBits(GPIOA,GPIO_Pin_4);//cs = 0;
-			Data_R=SPI1_ReadWriteByte(0xA81A);
-			//Data_R=SPIx_SendReadByte36(0xF000F000F);
-			switch(Data_R&0xFF00)
+			for(iii=0;iii<28;iii++)
 			{
-				case 0x0100:data[jjj][0]=Data_R&0x00FF;break;
-				case 0x0200:data[jjj][1]=Data_R&0x00FF;break;
-				case 0x0300:data[jjj][2]=Data_R&0x00FF;break;
-				case 0x0400:data[jjj][3]=Data_R&0x00FF;break;
-				case 0x0500:data[jjj][4]=Data_R&0x00FF;break;
-				case 0x0600:data[jjj][5]=Data_R&0x00FF;break;
-				case 0x0700:data[jjj][6]=Data_R&0x00FF;break;
-				case 0x0800:data[jjj][7]=Data_R&0x00FF;break;
-				case 0x0900:data[jjj][8]=Data_R&0x00FF;break;
-				case 0x0A00:data[jjj][9]=Data_R&0x00FF;break;
-				case 0x0B00:data[jjj][10]=Data_R&0x00FF;break;
-				case 0x0C00:data[jjj][11]=Data_R&0x00FF;break;
-				case 0x0D00:data[jjj][12]=Data_R&0x00FF;break;
-				case 0x0E00:data[jjj][13]=Data_R&0x00FF;break;
-				case 0x0F00:data[jjj][14]=Data_R&0x00FF;break;
-				case 0x1000:data[jjj][15]=Data_R&0x00FF;break;
-				case 0x1100:data[jjj][16]=Data_R&0x00FF;break;
-				case 0x1200:data[jjj][17]=Data_R&0x00FF;break;
-				case 0x1300:data[jjj][18]=Data_R&0x00FF;break;
-				case 0x1400:data[jjj][19]=Data_R&0x00FF;break;
-				case 0x1500:data[jjj][20]=Data_R&0x00FF;break;
-				case 0x1600:data[jjj][21]=Data_R&0x00FF;break;
-				case 0x1700:data[jjj][22]=Data_R&0x00FF;break;
-				case 0x1800:data[jjj][23]=Data_R&0x00FF;break;
-				case 0x1900:data[jjj][24]=Data_R&0x00FF;break;
-				case 0x1A00:data[jjj][25]=Data_R&0x00FF;break;
-				case 0x1B00:data[jjj][26]=Data_R&0x00FF;break;
-				case 0x1C00:data[jjj][27]=Data_R&0x00FF;break;
-				default:break;
-			}
+				GPIO_SetBits(GPIOA,GPIO_Pin_3);//flag = 1;
+				GPIO_ResetBits(GPIOA,GPIO_Pin_4);//cs = 0;
+				Data_R=SPI1_ReadWriteByte(0xA81A);
+				//Data_R=SPIx_SendReadByte36(0xF000F000F);
+				switch(Data_R&0xFF00)
+				{
+					case 0x0100:data[jjj][0]=Data_R&0x00FF;break;
+					case 0x0200:data[jjj][1]=Data_R&0x00FF;break;
+					case 0x0300:data[jjj][2]=Data_R&0x00FF;break;
+					case 0x0400:data[jjj][3]=Data_R&0x00FF;break;
+					case 0x0500:data[jjj][4]=Data_R&0x00FF;break;
+					case 0x0600:data[jjj][5]=Data_R&0x00FF;break;
+					case 0x0700:data[jjj][6]=Data_R&0x00FF;break;
+					case 0x0800:data[jjj][7]=Data_R&0x00FF;break;
+					case 0x0900:data[jjj][8]=Data_R&0x00FF;break;
+					case 0x0A00:data[jjj][9]=Data_R&0x00FF;break;
+					case 0x0B00:data[jjj][10]=Data_R&0x00FF;break;
+					case 0x0C00:data[jjj][11]=Data_R&0x00FF;break;
+					case 0x0D00:data[jjj][12]=Data_R&0x00FF;break;
+					case 0x0E00:data[jjj][13]=Data_R&0x00FF;break;
+					case 0x0F00:data[jjj][14]=Data_R&0x00FF;break;
+					case 0x1000:data[jjj][15]=Data_R&0x00FF;break;
+					case 0x1100:data[jjj][16]=Data_R&0x00FF;break;
+					case 0x1200:data[jjj][17]=Data_R&0x00FF;break;
+					case 0x1300:data[jjj][18]=Data_R&0x00FF;break;
+					case 0x1400:data[jjj][19]=Data_R&0x00FF;break;
+					case 0x1500:data[jjj][20]=Data_R&0x00FF;break;
+					case 0x1600:data[jjj][21]=Data_R&0x00FF;break;
+					case 0x1700:data[jjj][22]=Data_R&0x00FF;break;
+					case 0x1800:data[jjj][23]=Data_R&0x00FF;break;
+					case 0x1900:data[jjj][24]=Data_R&0x00FF;break;
+					case 0x1A00:data[jjj][25]=Data_R&0x00FF;break;
+					case 0x1B00:data[jjj][26]=Data_R&0x00FF;break;
+					case 0x1C00:data[jjj][27]=Data_R&0x00FF;break;
+					default:break;
+					}
+				}
+			
 			data_f++;
 			GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
 			GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
