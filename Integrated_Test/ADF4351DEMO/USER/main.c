@@ -145,7 +145,7 @@ void Display_Wave(void)
 	int i,j,k;
 	int b;
 	int c;
-	u16 y1,y2;
+	u16 y1,y2,y3,y4;
 	u32 cnt1,cnt2;
 	double pixel_step,display[20];
 	cnt1=((u32)data[0][20])|((u32)data[0][21]<<8)|((u32)data[0][22]<<16)|((u32)data[0][23]<<24);
@@ -258,14 +258,17 @@ void Display_Wave(void)
 			for(i=0; i<20; i++)display[i]=data[j][i]*10/256.0-5;
 			for(i=0; i<20; i++)display[i]=(10-display[i])*20;	
 			y1=display[0];
-			for(c=0;c<21;c++)
+			for(c=0;c<20;c++)
 				{
 					y2=display[c];
 					if(!(c==0&&j==0))
-						LCD_DrawLine((int)(20*j+c-1),y1,(int)(20*j+c),y2);
+						LCD_DrawLine((int)(20*j+c),y1,(int)(20*j+c+1),y2);
 						y1=y2;
 						GT9147_Scan(0);	
 				}
+			y3=(10-(data[j][19]*10/256.0-5))*20;
+			y4=(10-(data[j+1][0]*10/256.0-5))*20;
+			LCD_DrawLine((int)(20*j+20),y3,(int)(20*j+21),y4);
 			if((20*j+c)>=500)break;
 			//√Ëµ„ª≠Õº
 				

@@ -111,11 +111,11 @@ void EXTI0_IRQHandler(void)
 					case 0x1B00:data[jjj][26]=Data_R&0x00FF;break;
 					case 0x1C00:data[jjj][27]=Data_R&0x00FF;break;
 					default:break;
-					}
-					data_f++;
-					GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
-					GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
 				}
+				data_f++;
+				GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
+				GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
+			}
 		}
 	}
 	new_signal_flag = 1;
