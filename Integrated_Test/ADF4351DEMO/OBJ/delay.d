@@ -36,3 +36,7 @@
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\delay.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\delay.o: ..\HARDWARE\touch\touch.h
+..\obj\delay.o: ..\HARDWARE\touch\ott2001a.h
+..\obj\delay.o: ..\HARDWARE\touch\gt9147.h
+..\obj\delay.o: ..\HARDWARE\touch\ft5206.h

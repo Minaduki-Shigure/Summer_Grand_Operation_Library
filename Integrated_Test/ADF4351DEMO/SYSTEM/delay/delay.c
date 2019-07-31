@@ -1,5 +1,7 @@
 #include "delay.h"
 #include "sys.h"
+#include "touch.h"
+#include "gt9147.h"
 ////////////////////////////////////////////////////////////////////////////////// 	 
 //如果使用OS,则包括下面的头文件（以ucos为例）即可.
 #if SYSTEM_SUPPORT_OS
@@ -222,6 +224,21 @@ void delay_ms(u16 nms)
 	}
 	if(remain)delay_xms(remain);
 } 
+
+void mydelay(u16 nms)
+{	 	 
+	u8 repeat=nms/10;						//这里用540,是考虑到某些客户可能超频使用,
+											//比如超频到248M的时候,delay_xms最大只能延时541ms左右了
+	u16 remain=nms%10;
+	while(repeat)
+	{
+		delay_xms(10);
+		GT9147_Scan(0);	
+		repeat--;
+	}
+	if(remain)delay_xms(remain);
+} 
+
 #endif
 			 
 

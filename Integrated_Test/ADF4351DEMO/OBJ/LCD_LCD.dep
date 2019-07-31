@@ -1,5 +1,5 @@
 Dependencies for Project 'LCD', Target 'LCD': (DO NOT MODIFY !)
-F (.\main.c)(0x5D404CC8)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x5D4154A6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
 I (..\USER\stm32f4xx.h)(0x5D3D66D6)
 I (..\CORE\core_cm4.h)(0x5D3D66D6)
@@ -35,7 +35,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (..\SYSTEM\usart\usart.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
 I (..\HARDWARE\LED\led.h)(0x5D3D66D6)
@@ -204,7 +204,7 @@ I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
 I (..\HARDWARE\LCD\font.h)(0x5D3D66D6)
 I (..\SYSTEM\usart\usart.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\KEY\key.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\key.o --omf_browse ..\obj\key.crf --depend ..\obj\key.d)
 I (..\HARDWARE\KEY\key.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -242,7 +242,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\LCD12864\LCD12864.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\lcd12864.o --omf_browse ..\obj\lcd12864.crf --depend ..\obj\lcd12864.d)
 I (..\HARDWARE\LCD12864\LCD12864.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -280,7 +280,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\KeyBoard\KeyBoard.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\keyboard.o --omf_browse ..\obj\keyboard.crf --depend ..\obj\keyboard.d)
 I (..\HARDWARE\KeyBoard\KeyBoard.h)(0x5D3D66D6)
 I (..\USER\stm32f4xx.h)(0x5D3D66D6)
@@ -318,7 +318,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (..\HARDWARE\LCD12864\LCD12864.h)(0x5D3D66D6)
 I (..\HARDWARE\LCD\lcd.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
@@ -359,7 +359,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\ADC\adc.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\adc.o --omf_browse ..\obj\adc.crf --depend ..\obj\adc.d)
 I (..\HARDWARE\ADC\adc.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -397,7 +397,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\SPI\spi.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\spi.o --omf_browse ..\obj\spi.crf --depend ..\obj\spi.d)
 I (..\HARDWARE\SPI\spi.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -472,7 +472,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\IIC\myiic.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\myiic.o --omf_browse ..\obj\myiic.crf --depend ..\obj\myiic.d)
 I (..\HARDWARE\IIC\myiic.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -510,7 +510,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\touch\24cxx.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\24cxx.o --omf_browse ..\obj\24cxx.crf --depend ..\obj\24cxx.d)
 I (..\HARDWARE\touch\24cxx.h)(0x5D3D66D6)
 I (..\HARDWARE\IIC\myiic.h)(0x5D3D66D6)
@@ -549,7 +549,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\touch\ctiic.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\ctiic.o --omf_browse ..\obj\ctiic.crf --depend ..\obj\ctiic.d)
 I (..\HARDWARE\touch\ctiic.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -587,7 +587,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\touch\ft5206.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\ft5206.o --omf_browse ..\obj\ft5206.crf --depend ..\obj\ft5206.d)
 I (..\HARDWARE\touch\ft5206.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -631,7 +631,7 @@ I (..\HARDWARE\touch\gt9147.h)(0x5D3D66D6)
 I (..\HARDWARE\touch\ctiic.h)(0x5D3D66D6)
 I (..\SYSTEM\usart\usart.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 F (..\HARDWARE\touch\gt9147.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\gt9147.o --omf_browse ..\obj\gt9147.crf --depend ..\obj\gt9147.d)
 I (..\HARDWARE\touch\gt9147.h)(0x5D3D66D6)
@@ -676,7 +676,7 @@ I (..\HARDWARE\touch\ft5206.h)(0x5D3D66D6)
 I (..\HARDWARE\touch\ctiic.h)(0x5D3D66D6)
 I (..\SYSTEM\usart\usart.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x5CEB79E2)
 I (..\HARDWARE\LCD\lcd.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
@@ -723,7 +723,7 @@ I (..\HARDWARE\touch\ft5206.h)(0x5D3D66D6)
 I (..\HARDWARE\touch\ctiic.h)(0x5D3D66D6)
 I (..\SYSTEM\usart\usart.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5CEB79E2)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 F (..\HARDWARE\touch\touch.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\touch.o --omf_browse ..\obj\touch.crf --depend ..\obj\touch.d)
 I (..\HARDWARE\touch\touch.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
@@ -766,11 +766,11 @@ I (..\HARDWARE\touch\gt9147.h)(0x5D3D66D6)
 I (..\HARDWARE\touch\ft5206.h)(0x5D3D66D6)
 I (..\HARDWARE\LCD\lcd.h)(0x5D3D66D6)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5CEB79E2)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x5CEB79D6)
 I (..\HARDWARE\touch\24cxx.h)(0x5D3D66D6)
 I (..\HARDWARE\IIC\myiic.h)(0x5D3D66D6)
-F (..\HARDWARE\EXTI\exti.c)(0x5D4136B1)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\exti.o --omf_browse ..\obj\exti.crf --depend ..\obj\exti.d)
+F (..\HARDWARE\EXTI\exti.c)(0x5D4144D8)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\exti.o --omf_browse ..\obj\exti.crf --depend ..\obj\exti.d)
 I (..\HARDWARE\EXTI\exti.h)(0x5D3D66D6)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
 I (..\USER\stm32f4xx.h)(0x5D3D66D6)
@@ -807,11 +807,11 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (..\HARDWARE\LED\led.h)(0x5D3D66D6)
 I (..\HARDWARE\SPI\spi.h)(0x5D3D66D6)
-F (..\SYSTEM\delay\delay.c)(0x5D4054B9)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
-I (..\SYSTEM\delay\delay.h)(0x5D3D66D6)
+F (..\SYSTEM\delay\delay.c)(0x5D414BB9)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\delay.o --omf_browse ..\obj\delay.crf --depend ..\obj\delay.d)
+I (..\SYSTEM\delay\delay.h)(0x5D414B71)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
 I (..\USER\stm32f4xx.h)(0x5D3D66D6)
 I (..\CORE\core_cm4.h)(0x5D3D66D6)
@@ -847,6 +847,10 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x5D3D66D6)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x5D3D66D6)
+I (..\HARDWARE\touch\touch.h)(0x5D3D66D6)
+I (..\HARDWARE\touch\ott2001a.h)(0x5D3D66D6)
+I (..\HARDWARE\touch\gt9147.h)(0x5D3D66D6)
+I (..\HARDWARE\touch\ft5206.h)(0x5D3D66D6)
 F (..\SYSTEM\sys\sys.c)(0x5D3D66D6)(-c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\KEY -I ..\HARDWARE\KEY -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\HARDWARE\LCD12864 -I ..\HARDWARE\KeyBoard -I ..\HARDWARE\ADF4351 -I ..\HARDWARE\ADC -I ..\HARDWARE\SPI -I ..\HARDWARE\PE4302 -I ..\HARDWARE\IIC -I ..\HARDWARE\touch -I ..\HARDWARE\EXTI-I.\RTE\_LCD-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Users\Player\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="528" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER --C99-o ..\obj\sys.o --omf_browse ..\obj\sys.crf --depend ..\obj\sys.d)
 I (..\SYSTEM\sys\sys.h)(0x5D3D66D6)
 I (..\USER\stm32f4xx.h)(0x5D3D66D6)

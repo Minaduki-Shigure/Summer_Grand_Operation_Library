@@ -234,40 +234,61 @@ void Display_Wave(void)
 	}
 	if(sample_mode==1)
 	{
-	for(j=0;j<25;j++)
+		
+		LCD_Fill(0,0,500,400,BLACK);
+		POINT_COLOR=WHITE;
+		for(i=1;i<10;i++)
 		{
-		POINT_COLOR=GREEN;
-		for(i=0; i<20; i++)display[i]=data[j][i]*10/256.0-5;
-		for(i=0; i<20; i++)display[i]=(10-display[i])*20;	
-		y1=display[0];
-		for(c=0;c<20;c++)
+			for(j=1;j<41;j++)LCD_DrawPoint(50*i,10*j);
+		}
+		for(i=1;i<8;i++)
+		{
+			for(j=1;j<51;j++)LCD_DrawPoint(10*j,50*i);
+		}																				//ª≠–Èœﬂ
+		
+		LCD_DrawLine(0, 0, 500, 0);
+		LCD_DrawLine(0, 400, 500, 400);					//∫·œﬂ
+		
+		LCD_DrawLine(0, 0, 0, 400);
+		LCD_DrawLine(500, 0, 500  , 400);					// ˙œﬂ		
+		
+		for(j=0;j<25;j++)
 			{
-				y2=display[c];
-				if(!(c==0))
-					LCD_DrawLine((int)(j*c),y1,(int)(j*(c+1)),y2);
-					y1=y2;
-					GT9147_Scan(0);	
-			}
-		if((20*j+c)>=500)break;
-						//√Ëµ„ª≠Õº
+			POINT_COLOR=GREEN;
+			for(i=0; i<20; i++)display[i]=data[j][i]*10/256.0-5;
+			for(i=0; i<20; i++)display[i]=(10-display[i])*20;	
+			y1=display[0];
+			for(c=0;c<21;c++)
+				{
+					y2=display[c];
+					if(!(c==0&&j==0))
+						LCD_DrawLine((int)(20*j+c-1),y1,(int)(20*j+c),y2);
+						y1=y2;
+						GT9147_Scan(0);	
+				}
+			if((20*j+c)>=500)break;
+			//√Ëµ„ª≠Õº
 				
-			POINT_COLOR=WHITE;
-				LCD_DrawPoint(X_pos++, Y_to_draw*Workspace_y_max);
-				if(X_pos<Workspace_x_max-30){
-					LCD_Fill(X_pos+30, 0, X_pos+30, Workspace_y_max, DARKBLUE);
-					for(i=0; i<9; i++){
-						LCD_DrawPoint(X_pos+30, 50*i);
-					}		
-				}
-				else{
-					LCD_Fill(X_pos+30-Workspace_x_max, 0, X_pos+30-Workspace_x_max, Workspace_y_max, DARKBLUE);
-					for(i=0; i<9; i++){
-						LCD_DrawPoint(X_pos+30-Workspace_x_max, 50*i);
-					}		
-				}
-				if(X_pos==Workspace_x_max)
-					X_pos=0;
+							
+	//			POINT_COLOR=WHITE;
+	//				LCD_DrawPoint(X_pos++, Y_to_draw*Workspace_y_max);
+	//				if(X_pos<Workspace_x_max-30){
+	//					LCD_Fill(X_pos+30, 0, X_pos+30, Workspace_y_max, DARKBLUE);
+	//					for(i=0; i<9; i++){
+	//						LCD_DrawPoint(X_pos+30, 50*i);
+	//					}		
+	//				}
+	//				else{
+	//					LCD_Fill(X_pos+30-Workspace_x_max, 0, X_pos+30-Workspace_x_max, Workspace_y_max, DARKBLUE);
+	//					for(i=0; i<9; i++){
+	//						LCD_DrawPoint(X_pos+30-Workspace_x_max, 50*i);
+	//					}		
+	//				}
+	//				if(X_pos==Workspace_x_max)
+	//					X_pos=0;
+				
 			}
+		mydelay(1000);
 		}	
 	}
 //}

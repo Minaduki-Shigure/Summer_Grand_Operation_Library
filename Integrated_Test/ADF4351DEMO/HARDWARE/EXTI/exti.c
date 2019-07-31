@@ -68,7 +68,7 @@ void EXTI0_IRQHandler(void)
 		GPIO_ResetBits(GPIOA,GPIO_Pin_3);//flag = 0;
 		GPIO_SetBits(GPIOA,GPIO_Pin_4);//cs = 1;
 	}
-	Freq=((u32)data[0][24])|((u32)data[0][25]<<8)|((u32)data[0][26]<<16)|((u32)data[0][27]<<24);	//The freq is here.
+	Freq=((u32)data[0][20])|((u32)data[0][21]<<8)|((u32)data[0][22]<<16)|((u32)data[0][23]<<24);	//The freq is here.
 	sample_mode=(Freq>FREQ_JUDGE)?EQUIVALENT:CONTINUOUS;
 	if(sample_mode == CONTINUOUS)
 	{
